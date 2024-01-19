@@ -41,15 +41,23 @@ git clone https://github.com/
 ```sh
 source docker_build.sh <IMAGE_NAME>
 ```
+where <IMAGE_NAME> is a name for the image you want to build.
 
 3. In the terminal in the repo, source the run file
 ```sh
 source docker_run.sh <IMAGE_NAME> <CONTAINER_NAME>
 ```
+where <IMAGE_NAME> is the name of the image you have just built, while <CONTAINER_NAME> is a name for the container hosting the image.
 
 ### Notes 
-1. The container will be automatically destroyed once the shell is closed (--rm flag).
-2. The container's root password is "user" by default.
+1. The container's root password is "user" by default.
+
+2. The container will be automatically destroyed once exited (--rm flag). If you want to attach additional terminals to the container you need to keep it running (docker_run.sh script). You can attach a new terminal by running the following command
+```sh
+docker exec -it $(docker ps -aqf "name=<CONTAINER_NAME>") bash
+```
+
+3. All apt-get performed inside the container will be removed one che container is closed. Please add all new dependacies to the Dockerfile and rebuild the image.
 
 ## Run example code
 To run the ros2 example code (talker), just execute the following command
