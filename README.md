@@ -47,7 +47,9 @@ source docker_build.sh <IMAGE_NAME>
 source docker_run.sh <IMAGE_NAME> <CONTAINER_NAME>
 ```
 
-NOTE: the container will be automatically destroyed once the shell is closed (--rm flag).
+### Notes 
+1. The container will be automatically destroyed once the shell is closed (--rm flag).
+2. The container's root password is "user" by default.
 
 ## Run example code
 To run the ros2 example code (talker), just execute the following command
